@@ -1,0 +1,66 @@
+.nav-menu {  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  
+  .nav-menu-button {
+    display: none;
+  }
+}
+
+.list_menu {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto ;
+  height: initial;
+  transition: height .3s ease;
+
+  > li {
+    list-style: none;
+    
+    a {
+      display: block;  
+      text-decoration: none;
+    }
+  }
+}
+
+@media all and (max-width: 980px) {
+  .nav-menu {
+    border-radius: 0;    
+    &.visible {
+      .list_menu {
+        height: initial;
+        overflow: initial;
+        transition: height .3s ease;
+        flex: 1 1 auto;
+      }
+    }
+    .nav-menu-button {
+      display: inline-flex;
+      flex: 1 1 auto;
+    }
+  }
+  
+  .list_menu {
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    
+    li {
+      width: 100%;
+      a {
+        text-align: center;
+      }
+    }
+  }
+}

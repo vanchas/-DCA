@@ -1,0 +1,79 @@
+.main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1em;
+  background: #eee;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: .5em;
+}
+
+.wallet_info_block {
+  grid-column: span 2;
+  border: 1px solid #999;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: .3em;
+  grid-gap: .3em;
+}
+.wallet_info_block * {
+  border: 1px solid #999;
+  width: 100%;
+  text-align: center;
+  line-height: 2em;
+}
+.balance {
+  grid-column: span 2;
+}
+.month_income {
+}
+.month_expenses {
+}
+
+.expenses_block {
+  border: 1px solid #999;
+  padding: .3em;
+}
+.expenses_input {
+  display: grid;
+  grid-gap: .3em;
+  grid-template-columns: 70% 28%;
+}
+ #accordionExample {
+  display: grid;
+  grid-gap: .3em;
+  margin: .3em 0;
+}
+.card-body {
+  display: grid;
+}
+#headingOne,
+#headingTwo,
+#headingThree,
+#headingFour,
+#headingFive {
+  padding: 0;
+}
+
+.income_block {
+  border: 1px solid #999;
+  padding: .3em;
+}
+.income_input {
+  display: grid;
+  grid-template-columns: 80% 18%;
+  grid-gap: .3em;
+}
+.income_comment {
+  grid-column: span 2;
+}
+.income_list {
+  padding: 1em 1em 0 1em;
+}
+
+@media screen and (max-width: 768px) {
+  .expenses_input {
+    grid-template-columns: 1fr;
+  }
+}
