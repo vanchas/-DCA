@@ -6,11 +6,10 @@ export default class ItemOfListTransaction extends Component {
   }
 
   render() {
-    const date = `${this.props.transaction.date.getDate()}.${this.props.transaction.date.getMonth()+1}.${this.props.transaction.date.getFullYear()}`;
     return (
       <div>
         <mark>{this.props.transaction.sum}</mark> - 
-        <small> {date}</small><br/>
+        <small> {this.props.transaction.date}</small><br/>
         <small>{this.props.transaction.comment}</small>
       </div>
     )

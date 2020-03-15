@@ -4,6 +4,7 @@ import Main from '../components/main/Main';
 // import { setNewExpense } from '../store/actions'
 // import { connect } from 'react-redux';
 import { valueValidator } from './validator';
+import moment from 'moment';
 
 class WalletContainer extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class WalletContainer extends Component {
               sum: newExpense.sum,
               comment: newExpense.comment,
               type: newExpense.type,
-              date: new Date()
+              date: moment().format("MMM Do YY")
             });
           }
         })

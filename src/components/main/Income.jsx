@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './main.scss';
 import ItemOfListTransaction from './ItemOfListTransaction';
+import moment from 'moment';
 
 export default class Info extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class Info extends Component {
       this.props.setNewIncome({
         sum: this.state.incomeSum,
         comment: this.state.incomeComment,
-        date: new Date
+        date: moment().format("MMM Do YY")
       });
       res()
     }).then(() => {
