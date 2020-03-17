@@ -5,17 +5,21 @@ import Expenses from './Expenses';
 import Income from './Income';
 
 export default class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <main className="main">
-        <TotalInfo expenses={this.props.expenses} incomes={this.props.incomes} incomesTotalSum={this.props.incomesTotalSum} expensesTotalSum={this.props.expensesTotalSum} />
-        <Expenses setNewExpense={this.props.setNewExpense}
-          expenses={this.props.expenses}
+        <TotalInfo
+          incomesTotalSum={this.props.incomesTotalSum}
+          expensesTotalSum={this.props.expensesTotalSum}
         />
-        <Income setNewIncome={this.props.setNewIncome} incomes={this.props.incomes} />
+        <Expenses
+          expenses={this.props.expenses}
+          setNewExpense={this.props.setNewExpense}
+        />
+        <Income
+          incomes={this.props.incomes}
+          setNewIncome={this.props.setNewIncome}
+        />
       </main>
     )
   }

@@ -16,10 +16,10 @@ export default class Expenses extends Component {
     ];
     this.types = [
       { type: 'food', amount: 0 },
-      { type: 'daily', amount: 0 },
-      { type: 'medicine', amount: 0 },
       { type: 'study', amount: 0 },
-      { type: 'fun', amount: 0 }
+      { type: 'fun', amount: 0 },
+      { type: 'medicine', amount: 0 },
+      { type: 'daily', amount: 0 }
     ];
     this.state = {
       expenseSum: '',
@@ -48,11 +48,11 @@ export default class Expenses extends Component {
   }
 
   onExpenseAdding = () => {
-    this.props.setNewExpense({
-      sum: this.state.expenseSum,
-      comment: this.state.expenseComment,
-      type: this.state.selectedOption.value
-    });
+    this.props.setNewExpense(
+      this.state.expenseSum,
+      this.state.expenseComment,
+      this.state.selectedOption.value
+    );
     this.setState({
       expenseSum: '',
       expenseComment: '',
@@ -86,15 +86,20 @@ export default class Expenses extends Component {
   }
 
   render() {
+    console.log(this.types);
+    
     return (
       <div className="expenses_block">
+        <label className="interface-toggle-exp">Expenses
+          <input type="radio" name="toggle"/>
+        </label>
         <div className="expenses_input">
           <input
-            className="expenses_sum_input"
+            className="expenses_sum_input form-control"
             value={this.state.expenseSum}
             onChange={e => this.expensesSumInput(e.target)}
             type="number"
-            placeholder=" expense sum$" />
+            placeholder="expense sum$" />
           <Select
             options={this.options}
             onChange={this.setSelectOption}
@@ -102,22 +107,21 @@ export default class Expenses extends Component {
           />
           <input
             onChange={e => this.expensesCommentInput(e.target)}
-            className="expenses_commnet_input"
+            className="expenses_commnet_input form-control"
             type="text"
             value={this.state.expenseComment}
-            placeholder=" commentary"
+            placeholder="commentary"
           />
-          <button className="add"
+          <button className="add btn btn-secondary font-weight-bold"
             onClick={this.onExpenseAdding}>add</button>
         </div>
 
-        <Accordion defaultActiveKey="0">
+        <Accordion className="accordion" defaultActiveKey="0">
           <Card>
             <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                Food: &nbsp; {this.types.map(t => {
-                  if (t.type === 'food') return t.amount;
-                })}
+              <Accordion.Toggle as={Button} variant="link" eventKey="0" 
+              className="text-secondary font-weight-bold">
+                Food: &nbsp; {this.types[0].amount}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
@@ -134,10 +138,9 @@ export default class Expenses extends Component {
           </Card>
           <Card>
             <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                Study: &nbsp; {this.types.map(t => {
-                  if (t.type === 'study') return t.amount;
-                })}
+              <Accordion.Toggle as={Button} variant="link" eventKey="1"
+              className="text-secondary font-weight-bold">
+                Study: &nbsp; {this.types[1].amount}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="1">
@@ -154,10 +157,9 @@ export default class Expenses extends Component {
           </Card>
           <Card>
             <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                Fun: &nbsp; {this.types.map(t => {
-                  if (t.type === 'fun') return t.amount;
-                })}
+              <Accordion.Toggle as={Button} variant="link" eventKey="2"
+              className="text-secondary font-weight-bold">
+                Fun: &nbsp; {this.types[2].amount}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="2">
@@ -174,10 +176,9 @@ export default class Expenses extends Component {
           </Card>
           <Card>
             <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="3">
-                Medicine: &nbsp; {this.types.map(t => {
-                  if (t.type === 'medicine') return t.amount;
-                })}
+              <Accordion.Toggle as={Button} variant="link" eventKey="3"
+              className="text-secondary font-weight-bold">
+                Medicine: &nbsp; {this.types[3].amount}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="3">
@@ -194,10 +195,9 @@ export default class Expenses extends Component {
           </Card>
           <Card>
             <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="4">
-                Daily: &nbsp; {this.types.map(t => {
-                  if (t.type === 'daily') return t.amount;
-                })}
+              <Accordion.Toggle as={Button} variant="link" eventKey="4"
+              className="text-secondary font-weight-bold">
+                Daily: &nbsp; {this.types[4].amount}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="4">

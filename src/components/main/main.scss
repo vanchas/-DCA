@@ -6,44 +6,44 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: .5em;
+  grid-gap: 0.5em;
 }
 
 .wallet_info_block {
   grid-column: span 2;
-  border: 1px solid #999;
+  border: 2px solid #bbbbbb;
+  border-radius: 0.3em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: .3em;
-  grid-gap: .3em;
-}
-.wallet_info_block * {
-  border: 1px solid #999;
-  width: 100%;
+  padding: 0.3em;
+  grid-gap: 0.3em;
   text-align: center;
-  line-height: 2em;
+  .alert {
+    margin: 0;
+    padding: 0.3em 0;
+  }
 }
 .balance {
   grid-column: span 2;
 }
-.month_income {
-}
-.month_expenses {
-}
 
 .expenses_block {
-  border: 1px solid #999;
-  padding: .3em;
+  background: #eee;
+  border: 2px solid #bbb;
+  padding: 0.3em;
+  border-radius: 0.3em;
+
+  .interface-toggle-exp {
+    display: none;
+  }
+  .accordion {
+    margin-top: 0.5em;
+  }
 }
 .expenses_input {
   display: grid;
-  grid-gap: .3em;
+  grid-gap: 0.3em;
   grid-template-columns: 70% 28%;
-}
- #accordionExample {
-  display: grid;
-  grid-gap: .3em;
-  margin: .3em 0;
 }
 .card-body {
   display: grid;
@@ -57,13 +57,23 @@
 }
 
 .income_block {
-  border: 1px solid #999;
-  padding: .3em;
+  background: #eee;
+  border: 2px solid #bbb;
+  border-radius: 0.3em;
+  padding: 0.3em;
+
+  .interface-toggle-inc {
+    display: none;
+  }
 }
 .income_input {
   display: grid;
   grid-template-columns: 80% 18%;
-  grid-gap: .3em;
+  grid-gap: 0.3em;
+
+  .btn-add-income {
+    padding: 0;
+  }
 }
 .income_comment {
   grid-column: span 2;
@@ -75,5 +85,64 @@
 @media screen and (max-width: 768px) {
   .expenses_input {
     grid-template-columns: 1fr;
+  }
+
+  .wallet_info_block {
+    grid-template-columns: 1fr;
+    .balance {
+      grid-column: span 1;
+    }
+  }
+
+  .expenses_block {
+    width: 190%;
+    z-index: 1;
+    margin-top: 2.5em;
+    .interface-toggle-exp {
+      color: #fff;
+      width: 100%;
+      text-shadow: 3px 2px 1px #aaaaaa;
+      font-weight: bold;
+      font-size: 23px;
+      padding-left: 0.4em;
+      height: 1.7em;
+      width: 100%;
+      background-color: #d6d8d9;
+      border-radius: 0.3em 0.3em 0 0;
+      border: 1px solid #bbbbbb;
+      display: inline-block;
+      margin-bottom: 0.3em;
+      input {
+        opacity: 0;
+      }
+    }
+  }
+  .choose-inc {
+    z-index: 1;
+  }
+
+  .income_block {
+    width: 190%;
+    margin-left: -90%;
+    .interface-toggle-inc {
+      color: #fff;
+      width: 100%;
+      text-shadow: 3px 2px 1px #aaaaaa;
+      font-weight: bold;
+      font-size: 23px;
+      text-align: end;
+      padding-right: 0.4em;
+      height: 1.7em;
+      width: 100%;
+      background-color: #d6d8d9;
+      border-radius: 0.3em 0.3em 0 0;
+      border: 1px solid #bbbbbb;
+      display: inline-block;
+      margin-bottom: 0.3em;
+      user-select: none;
+      input {
+        opacity: 0;
+      }
+    }
   }
 }
