@@ -13,6 +13,7 @@
   grid-column: span 2;
   border: 2px solid #bbbbbb;
   border-radius: 0.3em;
+  text-shadow: 3px 2px 1px #f7f7f7;
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0.3em;
@@ -131,7 +132,7 @@
       font-weight: bold;
       font-size: 23px;
       text-align: end;
-      padding-right: 0.4em;
+      padding: 0 .4em;
       height: 1.7em;
       width: 100%;
       background-color: #d6d8d9;
@@ -140,6 +141,9 @@
       display: inline-block;
       margin-bottom: 0.3em;
       user-select: none;
+      span {
+        margin-top: .3em;
+      }
       input {
         opacity: 0;
       }

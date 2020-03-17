@@ -59,7 +59,7 @@ export default class Info extends Component {
         onClick={this.showBlock}
       >
         <label className="interface-toggle-inc">
-          <span className="font-weight-light float-left">
+          <span className=" font-weight-light float-left h5">
             {this.state.blockMessage}</span>
           Incomes
           <input

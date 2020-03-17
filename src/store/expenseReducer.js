@@ -42,6 +42,7 @@ const expenseReducer = (state = initialState, action) => {
           })
         }
       }
+      break;
 
     default:
       return state;

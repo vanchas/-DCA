@@ -48,41 +48,30 @@ export default class Expenses extends Component {
   }
 
   onExpenseAdding = () => {
-    this.props.setNewExpense(
-      this.state.expenseSum,
-      this.state.expenseComment,
-      this.state.selectedOption.value
-    );
-    this.setState({
-      expenseSum: '',
-      expenseComment: '',
-      expenseType: ''
+    new Promise(res => {
+      this.props.setNewExpense(
+        this.state.expenseSum,
+        this.state.expenseComment,
+        this.state.selectedOption.value
+      );
+      res();
+    }).then(() => {
+      this.types.map(t => {
+        if (t.type === this.state.selectedOption.value) {
+          t.amount += +this.state.expenseSum;
+        }
+      });
+    }).then(() => {
+      this.setState({
+        expenseSum: '',
+        expenseComment: '',
+        expenseType: ''
+      });
     })
-    this.updateTypesAmount('food');
-    this.updateTypesAmount('fun');
-    this.updateTypesAmount('daily');
-    this.updateTypesAmount('medicine');
-    this.updateTypesAmount('study');
   }
 
   setSelectOption = (selectedOption) => {
     this.setState({ selectedOption });
-  }
-
-  updateTypesAmount = (type) => {
-    let amount = 0;
-    this.props.expenses.map(exp => {
-      if (exp.type === type) {
-        exp.storage.map(e => {
-          amount += +e.sum;
-        })
-      }
-      this.types.map(_type => {
-        if (type == _type.type) {
-          _type.amount = amount;
-        }
-      })
-    })
   }
 
   render() {
@@ -126,7 +115,7 @@ export default class Expenses extends Component {
             </Card.Header>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
-                {this.props.expenses.map(exp => {
+                {this.props.expenses.map((exp) => {
                   if (exp.type === 'food') {
                     return exp.storage.map(expense => {
                       return <ItemOfListTransaction key={Math.random()} transaction={expense} />

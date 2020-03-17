@@ -21,6 +21,7 @@ const incomeReducer = (state = initialState, action) => {
           incomesTotalSum: sum(action.payload.sum)
         })
       }
+      break;
 
     default:
       return state;
