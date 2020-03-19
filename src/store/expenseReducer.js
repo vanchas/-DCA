@@ -4,7 +4,19 @@ import moment from 'moment';
 
 const initialState = {
   expenses: [
-    { type: 'food', storage: [] },
+    { type: 'food', storage: [
+      // {sum: 10, comment: 'test', date: '20 5 20'},
+      // {sum: 9, comment: 'test', date: '20 5 20'},
+      // {sum: 11, comment: 'test', date: '20 5 20'},
+      // {sum: 11, comment: 'test', date: '20 5 20'},
+      // {sum: 11, comment: 'test', date: '20 5 20'},
+      // {sum: 11, comment: 'test', date: '20 5 20'},
+      // {sum: 11, comment: 'test', date: '20 5 20'},
+      // {sum: 11, comment: 'test', date: '20 5 20'},
+      // {sum: 11, comment: 'test', date: '20 5 20'},
+      // {sum: 11, comment: 'test', date: '20 5 20'},
+      // {sum: 12, comment: 'test', date: '20 5 20'}
+    ] },
     { type: 'fun', storage: [] },
     { type: 'medicine', storage: [] },
     { type: 'daily', storage: [] },
@@ -18,7 +30,7 @@ function sum(num) {
   return sumNum += +num;
 }
 
-const expenseReducer = (state = initialState, action) => {
+export const expenseReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case ADD_EXPENSE:
@@ -42,7 +54,7 @@ const expenseReducer = (state = initialState, action) => {
           })
         }
       }
-      break;
+      return state;
 
     default:
       return state;

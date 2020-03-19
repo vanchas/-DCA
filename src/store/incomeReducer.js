@@ -5,6 +5,7 @@ const initialState = {
   incomes: [],
   incomesTotalSum: 0
 }
+
 let sumNum = 0;
 
 function sum(num) {
@@ -21,7 +22,7 @@ const incomeReducer = (state = initialState, action) => {
           incomesTotalSum: sum(action.payload.sum)
         })
       }
-      break;
+      return state;
 
     default:
       return state;

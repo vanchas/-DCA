@@ -46,8 +46,12 @@
   grid-gap: 0.3em;
   grid-template-columns: 70% 28%;
 }
-.card-body {
-  display: grid;
+.card-collapse {
+  max-height: 15em;
+  overflow-y: scroll;
+  .card-body {
+    height: 100%;
+  }
 }
 #headingOne,
 #headingTwo,
@@ -76,11 +80,21 @@
     padding: 0;
   }
 }
-.income_comment {
-  grid-column: span 2;
-}
 .income_list {
   padding: 1em 1em 0 1em;
+}
+
+.bar {
+  font: 10px sans-serif;
+  text-align: right;
+  padding: .3em;
+  margin: .2em;
+  color: white;
+  &:nth-child(1) { background-color: #6c757d; }
+  &:nth-child(2) { background-color: #75808a; }
+  &:nth-child(3) { background-color: #828d97; }
+  &:nth-child(4) { background-color: #93a0ac; }
+  &:nth-child(5) { background-color: #9dabb8; }
 }
 
 @media screen and (max-width: 768px) {
@@ -132,7 +146,7 @@
       font-weight: bold;
       font-size: 23px;
       text-align: end;
-      padding: 0 .4em;
+      padding: 0 0.4em;
       height: 1.7em;
       width: 100%;
       background-color: #d6d8d9;
@@ -142,7 +156,7 @@
       margin-bottom: 0.3em;
       user-select: none;
       span {
-        margin-top: .3em;
+        margin-top: 0.3em;
       }
       input {
         opacity: 0;

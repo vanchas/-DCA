@@ -10,7 +10,8 @@ export default class Info extends Component {
       incomeSum: '',
       incomeComment: '',
       blockClasses: 'income_block',
-      blockMessage: ''
+      blockMessage: '',
+      filterValue: ''
     };
   }
 
@@ -52,6 +53,26 @@ export default class Info extends Component {
     })
   }
 
+  updateList = () => {
+    if (!this.state.filterValue.length) {
+      return this.props.incomes.map(inc => {
+        return <ItemOfListTransaction key={Math.random()} transaction={inc} />
+      })
+    } else {
+      let newIncomes = this.props.incomes;
+        newIncomes = newIncomes.filter(inc => {
+          return inc.comment.toLowerCase().search(this.state.filterValue.toLowerCase()) !== -1;
+        });
+        return newIncomes.map(inc => {
+          return <ItemOfListTransaction key={Math.random()} transaction={inc} />
+        })
+    }
+  }
+
+  setFilterValue = (value) => {
+    this.setState({ filterValue: value })
+  }
+
   render() {
     return (
       <div className={this.state.blockClasses}
@@ -66,6 +87,7 @@ export default class Info extends Component {
             type="radio" name="toggle"
           />
         </label>
+
         <div className="income_input">
           <input
             className="income_sum_input form-control"
@@ -85,11 +107,13 @@ export default class Info extends Component {
             value={this.state.incomeComment}
             placeholder="commentary"
           />
+          <input type="text"
+            onChange={e => this.setFilterValue(e.target.value)}
+            title="filter by commentary"
+            className="income_filter form-control" placeholder="filter..." />
         </div>
         <div className="income_list">
-          {this.props.incomes.map(inc => {
-            return <ItemOfListTransaction key={Math.random()} transaction={inc} />
-          })}
+          {this.updateList()}
         </div>
       </div>
     )

@@ -3,6 +3,7 @@ import './main.scss';
 import Select from 'react-select';
 import ItemOfListTransaction from "./ItemOfListTransaction";
 import { Accordion, Card, Button } from 'react-bootstrap';
+import { Chart } from './Chart.jsx';
 
 export default class Expenses extends Component {
   constructor(props) {
@@ -48,39 +49,66 @@ export default class Expenses extends Component {
   }
 
   onExpenseAdding = () => {
-    new Promise(res => {
-      this.props.setNewExpense(
-        this.state.expenseSum,
-        this.state.expenseComment,
-        this.state.selectedOption.value
-      );
-      res();
-    }).then(() => {
-      this.types.map(t => {
-        if (t.type === this.state.selectedOption.value) {
-          t.amount += +this.state.expenseSum;
-        }
-      });
-    }).then(() => {
-      this.setState({
-        expenseSum: '',
-        expenseComment: '',
-        expenseType: ''
-      });
-    })
+    this.props.setNewExpense(
+      this.state.expenseSum,
+      this.state.expenseComment,
+      this.state.selectedOption.value
+    );
+    this.types.map(t => {
+      if (t.type === this.state.selectedOption.value) {
+        t.amount += +this.state.expenseSum;
+      }
+    });
+    this.setState({
+      expenseSum: '',
+      expenseComment: '',
+      expenseType: ''
+    });
   }
 
-  setSelectOption = (selectedOption) => {
+  setSelectOption = selectedOption => {
     this.setState({ selectedOption });
   }
 
+  updateList = exType => {
+    return this.props.expenses.map((exp) => {
+      if (exp.type === exType) {
+        return exp.storage.map(e => {
+          return <ItemOfListTransaction key={Math.random()} transaction={e} />
+        })
+      }
+    })
+  }
+
+  chartValuesCounter = () => {
+    const initialSumsOfTypes = [
+      +this.types[0].amount,
+      +this.types[1].amount,
+      +this.types[2].amount,
+      +this.types[3].amount,
+      +this.types[4].amount
+    ];
+
+    const absoluteMaxNum = Math.max(initialSumsOfTypes[0], initialSumsOfTypes[1], initialSumsOfTypes[2], initialSumsOfTypes[3], initialSumsOfTypes[4]);
+
+    const [first, second, third, fourth, fifth] = [
+      Math.round(initialSumsOfTypes[0] / absoluteMaxNum * 100),
+      Math.round(initialSumsOfTypes[1] / absoluteMaxNum * 100),
+      Math.round(initialSumsOfTypes[2] / absoluteMaxNum * 100),
+      Math.round(initialSumsOfTypes[3] / absoluteMaxNum * 100),
+      Math.round(initialSumsOfTypes[4] / absoluteMaxNum * 100)
+    ];
+
+    const sumsOfTypesInPercents = [first, second, third, fourth, fifth];
+
+    return sumsOfTypesInPercents;
+  }
+
   render() {
-    console.log(this.types);
-    
     return (
       <div className="expenses_block">
         <label className="interface-toggle-exp">Expenses
-          <input type="radio" name="toggle"/>
+          <input type="radio" name="toggle" />
         </label>
         <div className="expenses_input">
           <input
@@ -108,100 +136,72 @@ export default class Expenses extends Component {
         <Accordion className="accordion" defaultActiveKey="0">
           <Card>
             <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="0" 
-              className="text-secondary font-weight-bold">
+              <Accordion.Toggle as={Button} variant="link" eventKey="0"
+                className="text-secondary font-weight-bold">
                 Food: &nbsp; {this.types[0].amount}
               </Accordion.Toggle>
             </Card.Header>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>
-                {this.props.expenses.map((exp) => {
-                  if (exp.type === 'food') {
-                    return exp.storage.map(expense => {
-                      return <ItemOfListTransaction key={Math.random()} transaction={expense} />
-                    })
-                  }
-                })}
+            <Accordion.Collapse className="card-collapse" eventKey="0">
+              <Card.Body className="card-body">
+                {this.updateList('food')}
               </Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="1"
-              className="text-secondary font-weight-bold">
+                className="text-secondary font-weight-bold">
                 Study: &nbsp; {this.types[1].amount}
               </Accordion.Toggle>
             </Card.Header>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body>
-                {this.props.expenses.map(exp => {
-                  if (exp.type === 'study') {
-                    return exp.storage.map(expense => {
-                      return <ItemOfListTransaction key={Math.random()} transaction={expense} />
-                    })
-                  }
-                })}
+            <Accordion.Collapse className="card-collapse" eventKey="1">
+              <Card.Body className="card-body">
+                {this.updateList('study')}
               </Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="2"
-              className="text-secondary font-weight-bold">
+                className="text-secondary font-weight-bold">
                 Fun: &nbsp; {this.types[2].amount}
               </Accordion.Toggle>
             </Card.Header>
-            <Accordion.Collapse eventKey="2">
-              <Card.Body>
-                {this.props.expenses.map(exp => {
-                  if (exp.type === 'fun') {
-                    return exp.storage.map(expense => {
-                      return <ItemOfListTransaction key={Math.random()} transaction={expense} />
-                    })
-                  }
-                })}
+            <Accordion.Collapse className="card-collapse" eventKey="2">
+              <Card.Body className="card-body">
+                {this.updateList('fun')}
               </Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="3"
-              className="text-secondary font-weight-bold">
+                className="text-secondary font-weight-bold">
                 Medicine: &nbsp; {this.types[3].amount}
               </Accordion.Toggle>
             </Card.Header>
-            <Accordion.Collapse eventKey="3">
-              <Card.Body>
-                {this.props.expenses.map(exp => {
-                  if (exp.type === 'medicine') {
-                    return exp.storage.map(expense => {
-                      return <ItemOfListTransaction key={Math.random()} transaction={expense} />
-                    })
-                  }
-                })}
+            <Accordion.Collapse className="card-collapse" eventKey="3">
+              <Card.Body className="card-body">
+                {this.updateList('medicine')}
               </Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="4"
-              className="text-secondary font-weight-bold">
+                className="text-secondary font-weight-bold">
                 Daily: &nbsp; {this.types[4].amount}
               </Accordion.Toggle>
             </Card.Header>
-            <Accordion.Collapse eventKey="4">
-              <Card.Body>
-                {this.props.expenses.map(exp => {
-                  if (exp.type === 'daily') {
-                    return exp.storage.map(expense => {
-                      return <ItemOfListTransaction key={Math.random()} transaction={expense} />
-                    })
-                  }
-                })}
+            <Accordion.Collapse className="card-collapse" eventKey="4">
+              <Card.Body className="card-body">
+                {this.updateList('daily')}
               </Card.Body>
             </Accordion.Collapse>
           </Card>
         </Accordion>
+
+        <Chart data={this.chartValuesCounter()} />
       </div>
     )
   }
