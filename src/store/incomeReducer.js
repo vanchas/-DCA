@@ -1,5 +1,5 @@
 import { ADD_INCOME } from './actions';
-import { valueValidator } from '../containers/validator';
+import { valueValidator } from '../__tests__/validator';
 
 const initialState = {
   incomes: [],
@@ -21,6 +21,8 @@ const incomeReducer = (state = initialState, action) => {
           incomes: state.incomes.concat(action.payload),
           incomesTotalSum: sum(action.payload.sum)
         })
+      } else {
+        alert('Enter correct value. It must be a number');
       }
       return state;
 
