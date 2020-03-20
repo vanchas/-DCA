@@ -101,7 +101,7 @@ export default class Expenses extends Component {
       +this.types[4].amount
     ];
 
-    const absoluteMaxNum = Math.max(initialSumsOfTypes[0], initialSumsOfTypes[1], initialSumsOfTypes[2], initialSumsOfTypes[3], initialSumsOfTypes[4]);
+    const absoluteMaxNum = initialSumsOfTypes.reduce((a, b) => a + b);
 
     const [first, second, third, fourth, fifth] = [
       Math.round(initialSumsOfTypes[0] / absoluteMaxNum * 100),
@@ -127,10 +127,10 @@ export default class Expenses extends Component {
     })
     this.types.map(tp => {
       if (tp.type === exType) {
-        return tp.amount = arrOfTypeSums.reduce((a,b) => +a + +b, 0);
+        return tp.amount = arrOfTypeSums.reduce((a, b) => +a + +b, 0);
       }
     })
-    return arrOfTypeSums.reduce((a,b) => a + b, 0);
+    return arrOfTypeSums.reduce((a, b) => a + b, 0);
   }
 
   render() {
@@ -166,7 +166,7 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="0"
                 className="text-secondary font-weight-bold">
-                Food: &nbsp; 
+                Food: &nbsp;
                 {this.updateTypeAmount('food')}
               </Accordion.Toggle>
             </Card.Header>
@@ -180,7 +180,7 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="1"
                 className="text-secondary font-weight-bold">
-                Study: &nbsp; 
+                Study: &nbsp;
                 {this.updateTypeAmount('study')}
               </Accordion.Toggle>
             </Card.Header>
@@ -194,7 +194,7 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="2"
                 className="text-secondary font-weight-bold">
-                Fun: &nbsp; 
+                Fun: &nbsp;
                 {this.updateTypeAmount('fun')}
               </Accordion.Toggle>
             </Card.Header>
@@ -208,7 +208,7 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="3"
                 className="text-secondary font-weight-bold">
-                Medicine: &nbsp; 
+                Medicine: &nbsp;
                 {this.updateTypeAmount('medicine')}
               </Accordion.Toggle>
             </Card.Header>
@@ -222,7 +222,7 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="4"
                 className="text-secondary font-weight-bold">
-                Daily: &nbsp; 
+                Daily: &nbsp;
                 {this.updateTypeAmount('daily')}
               </Accordion.Toggle>
             </Card.Header>
@@ -234,7 +234,7 @@ export default class Expenses extends Component {
           </Card>
         </Accordion>
 
-        <Chart data={this.chartValuesCounter()} />
+        <Chart types={this.options} sumsOfTypesInPercents={this.chartValuesCounter()} />
       </div>
     )
   }
