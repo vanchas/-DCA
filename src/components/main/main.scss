@@ -65,7 +65,7 @@
   background: #eee;
   border: 2px solid #bbb;
   border-radius: 0.3em;
-  padding: 0.3em;
+  padding: 0.3em 0.3em 1em 0.3em;
 
   .interface-toggle-inc {
     display: none;
@@ -98,22 +98,26 @@
 }
 
 @media screen and (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
   .expenses_input {
     grid-template-columns: 1fr;
   }
 
   .wallet_info_block {
     grid-template-columns: 1fr;
+    grid-column: span 1;
     .balance {
       grid-column: span 1;
     }
   }
 
   .expenses_block {
-    width: 190%;
-    z-index: 1;
-    margin-top: 2.5em;
-    .interface-toggle-exp {
+    // width: 190%;
+    // z-index: 1;
+    // margin-top: 2.5em;
+    .label-exp-block {
       color: #fff;
       width: 100%;
       text-shadow: 3px 2px 1px #aaaaaa;
@@ -121,25 +125,18 @@
       font-size: 23px;
       padding-left: 0.4em;
       height: 1.7em;
-      width: 100%;
       background-color: #d6d8d9;
       border-radius: 0.3em 0.3em 0 0;
       border: 1px solid #bbbbbb;
       display: inline-block;
       margin-bottom: 0.3em;
-      input {
-        opacity: 0;
-      }
     }
-  }
-  .choose-inc {
-    z-index: 1;
   }
 
   .income_block {
-    width: 190%;
-    margin-left: -90%;
-    .interface-toggle-inc {
+    // width: 190%;
+    // margin-left: -90%;
+    .label-inc-block {
       color: #fff;
       width: 100%;
       text-shadow: 3px 2px 1px #aaaaaa;
@@ -148,19 +145,11 @@
       text-align: end;
       padding: 0 0.4em;
       height: 1.7em;
-      width: 100%;
       background-color: #d6d8d9;
       border-radius: 0.3em 0.3em 0 0;
       border: 1px solid #bbbbbb;
       display: inline-block;
       margin-bottom: 0.3em;
-      user-select: none;
-      span {
-        margin-top: 0.3em;
-      }
-      input {
-        opacity: 0;
-      }
     }
   }
 }

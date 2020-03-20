@@ -9,8 +9,6 @@ export default class Info extends Component {
     this.state = {
       incomeSum: '',
       incomeComment: '',
-      blockClasses: 'income_block',
-      blockMessage: '',
       filterValue: ''
     };
   }
@@ -39,20 +37,6 @@ export default class Info extends Component {
     })
   }
 
-  showBlock = () => {
-    this.setState({
-      blockMessage: 'double-click to hide',
-      blockClasses: `${this.state.blockClasses} choose-inc`
-    })
-  }
-
-  hideBlock = () => {
-    this.setState({
-      blockMessage: '',
-      blockClasses: 'income_block'
-    })
-  }
-
   updateList = () => {
     if (!this.state.filterValue.length) {
       return this.props.incomes.map(inc => {
@@ -60,12 +44,12 @@ export default class Info extends Component {
       })
     } else {
       let newIncomes = this.props.incomes;
-        newIncomes = newIncomes.filter(inc => {
-          return inc.comment.toLowerCase().search(this.state.filterValue.toLowerCase()) !== -1;
-        });
-        return newIncomes.map(inc => {
-          return <ItemOfListTransaction key={Math.random()} transaction={inc} />
-        })
+      newIncomes = newIncomes.filter(inc => {
+        return inc.comment.toLowerCase().search(this.state.filterValue.toLowerCase()) !== -1;
+      });
+      return newIncomes.map(inc => {
+        return <ItemOfListTransaction key={Math.random()} transaction={inc} />
+      })
     }
   }
 
@@ -75,19 +59,8 @@ export default class Info extends Component {
 
   render() {
     return (
-      <div className={this.state.blockClasses}
-        onDoubleClick={this.hideBlock}
-        onClick={this.showBlock}
-      >
-        <label className="interface-toggle-inc">
-          <span className=" font-weight-light float-left h5">
-            {this.state.blockMessage}</span>
-          Incomes
-          <input
-            type="radio" name="toggle"
-          />
-        </label>
-
+      <div className="income_block">
+        <div className="label-inc-block">Incomes</div>
         <div className="income_input">
           <input
             className="income_sum_input form-control"

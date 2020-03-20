@@ -4,19 +4,7 @@ import moment from 'moment';
 
 const initialState = {
   expenses: [
-    { type: 'food', storage: [
-      // {sum: 10, comment: 'test', date: '20 5 20'},
-      // {sum: 9, comment: 'test', date: '20 5 20'},
-      // {sum: 11, comment: 'test', date: '20 5 20'},
-      // {sum: 11, comment: 'test', date: '20 5 20'},
-      // {sum: 11, comment: 'test', date: '20 5 20'},
-      // {sum: 11, comment: 'test', date: '20 5 20'},
-      // {sum: 11, comment: 'test', date: '20 5 20'},
-      // {sum: 11, comment: 'test', date: '20 5 20'},
-      // {sum: 11, comment: 'test', date: '20 5 20'},
-      // {sum: 11, comment: 'test', date: '20 5 20'},
-      // {sum: 12, comment: 'test', date: '20 5 20'}
-    ] },
+    { type: 'food', storage: [] },
     { type: 'fun', storage: [] },
     { type: 'medicine', storage: [] },
     { type: 'daily', storage: [] },

@@ -54,11 +54,11 @@ export default class Expenses extends Component {
       this.state.expenseComment,
       this.state.selectedOption.value
     );
-    this.types.map(t => {
-      if (t.type === this.state.selectedOption.value) {
-        t.amount += +this.state.expenseSum;
-      }
-    });
+    // this.types.map(t => {
+    //   if (t.type === this.state.selectedOption.value) {
+    //     t.amount += +this.state.expenseSum;
+    //   }
+    // });
     this.setState({
       expenseSum: '',
       expenseComment: '',
@@ -71,6 +71,18 @@ export default class Expenses extends Component {
   }
 
   updateList = exType => {
+    // this.props.expenses.map(exp => {
+    //   if (exp.type === exType) {
+    //     this.types.forEach(tp => {
+    //       exp.storage.map(e => {
+    //         if (tp.type === exType) {
+    //           return tp.amount += +e.sum;
+    //         }
+    //       })
+    //     })
+    //   }
+    // })
+
     return this.props.expenses.map((exp) => {
       if (exp.type === exType) {
         return exp.storage.map(e => {
@@ -104,12 +116,28 @@ export default class Expenses extends Component {
     return sumsOfTypesInPercents;
   }
 
+  updateTypeAmount = exType => {
+    let arrOfTypeSums = [];
+    this.props.expenses.map(exp => {
+      if (exp.type === exType) {
+        return exp.storage.map(e => {
+          return arrOfTypeSums.push(+e.sum);
+        })
+      }
+    })
+    this.types.map(tp => {
+      if (tp.type === exType) {
+        return tp.amount = arrOfTypeSums.reduce((a,b) => +a + +b, 0);
+      }
+    })
+    return arrOfTypeSums.reduce((a,b) => a + b, 0);
+  }
+
   render() {
     return (
       <div className="expenses_block">
-        <label className="interface-toggle-exp">Expenses
-          <input type="radio" name="toggle" />
-        </label>
+        <div className="label-exp-block">Expenses
+        </div>
         <div className="expenses_input">
           <input
             className="expenses_sum_input form-control"
@@ -138,7 +166,8 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="0"
                 className="text-secondary font-weight-bold">
-                Food: &nbsp; {this.types[0].amount}
+                Food: &nbsp; 
+                {this.updateTypeAmount('food')}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse className="card-collapse" eventKey="0">
@@ -151,7 +180,8 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="1"
                 className="text-secondary font-weight-bold">
-                Study: &nbsp; {this.types[1].amount}
+                Study: &nbsp; 
+                {this.updateTypeAmount('study')}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse className="card-collapse" eventKey="1">
@@ -164,7 +194,8 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="2"
                 className="text-secondary font-weight-bold">
-                Fun: &nbsp; {this.types[2].amount}
+                Fun: &nbsp; 
+                {this.updateTypeAmount('fun')}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse className="card-collapse" eventKey="2">
@@ -177,7 +208,8 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="3"
                 className="text-secondary font-weight-bold">
-                Medicine: &nbsp; {this.types[3].amount}
+                Medicine: &nbsp; 
+                {this.updateTypeAmount('medicine')}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse className="card-collapse" eventKey="3">
@@ -190,7 +222,8 @@ export default class Expenses extends Component {
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="4"
                 className="text-secondary font-weight-bold">
-                Daily: &nbsp; {this.types[4].amount}
+                Daily: &nbsp; 
+                {this.updateTypeAmount('daily')}
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse className="card-collapse" eventKey="4">
