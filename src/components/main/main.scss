@@ -2,7 +2,7 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 1em;
-  background: #eee;
+  // background: #eee;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -98,7 +98,7 @@
   &:nth-child(5) { background-color: #9dabb8; }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .main {
     grid-template-columns: 1fr;
   }
@@ -115,9 +115,6 @@
   }
 
   .expenses_block {
-    // width: 190%;
-    // z-index: 1;
-    // margin-top: 2.5em;
     .label-exp-block {
       color: #fff;
       width: 100%;
@@ -135,8 +132,6 @@
   }
 
   .income_block {
-    // width: 190%;
-    // margin-left: -90%;
     .label-inc-block {
       color: #fff;
       width: 100%;
