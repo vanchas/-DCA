@@ -165,7 +165,7 @@ export default class Expenses extends Component {
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="0"
-                className="text-secondary font-weight-bold">
+                className="type-btn text-secondary font-weight-bold">
                 Food: &nbsp;
                 {this.updateTypeAmount('food')}
               </Accordion.Toggle>
@@ -179,7 +179,7 @@ export default class Expenses extends Component {
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="1"
-                className="text-secondary font-weight-bold">
+                className="type-btn text-secondary font-weight-bold">
                 Study: &nbsp;
                 {this.updateTypeAmount('study')}
               </Accordion.Toggle>
@@ -193,7 +193,7 @@ export default class Expenses extends Component {
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="2"
-                className="text-secondary font-weight-bold">
+                className="type-btn text-secondary font-weight-bold">
                 Fun: &nbsp;
                 {this.updateTypeAmount('fun')}
               </Accordion.Toggle>
@@ -207,7 +207,7 @@ export default class Expenses extends Component {
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="3"
-                className="text-secondary font-weight-bold">
+                className="type-btn text-secondary font-weight-bold">
                 Medicine: &nbsp;
                 {this.updateTypeAmount('medicine')}
               </Accordion.Toggle>
@@ -221,7 +221,7 @@ export default class Expenses extends Component {
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="4"
-                className="text-secondary font-weight-bold">
+                className="type-btn text-secondary font-weight-bold">
                 Daily: &nbsp;
                 {this.updateTypeAmount('daily')}
               </Accordion.Toggle>

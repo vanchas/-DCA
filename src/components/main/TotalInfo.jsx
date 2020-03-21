@@ -4,7 +4,7 @@ import './main.scss';
 export default class TotalInfo extends Component {
   
   updateBalanceColor = () => {
-      return (Math.sign(this.props.incomesTotalSum - this.props.expensesTotalSum) <= -1) ? 'red' : 'green';
+      return (Math.sign(this.props.incomesTotalSum - this.props.expensesTotalSum) <= -1) ? '#7b0000' : '#216f21';
   }
 
   render() {

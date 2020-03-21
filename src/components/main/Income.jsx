@@ -69,7 +69,7 @@ export default class Info extends Component {
             type="number"
             placeholder="income sum$"
           />
-          <button className="btn-add-income btn btn-secondary font-weight-bold"
+          <button className="add btn-add-income btn btn-secondary font-weight-bold"
             onClick={this.onIncomeAdding}>
             add
           </button>
