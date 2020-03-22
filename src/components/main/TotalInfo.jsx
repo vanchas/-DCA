@@ -19,7 +19,7 @@ export default class TotalInfo extends Component {
           <span>{this.props.expensesTotalSum}</span>
         </div>
         <div className="month_income alert alert-dark text-dark">
-          Total income: &nbsp;
+          Total incomes: &nbsp;
           <span>{this.props.incomesTotalSum}</span>
         </div>
       </div>

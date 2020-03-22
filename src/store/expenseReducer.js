@@ -1,5 +1,5 @@
 import { ADD_EXPENSE } from './actions';
-import { valueValidator } from '../__tests__/validator';
+import { valueValidator } from '../validators/validator';
 import moment from 'moment';
 
 const initialState = {
@@ -41,8 +41,6 @@ export const expenseReducer = (state = initialState, action) => {
             }
           })
         }
-      } else {
-        alert('Enter correct value. It must be a number');
       }
       return state;
 
