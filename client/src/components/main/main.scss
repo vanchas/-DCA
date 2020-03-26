@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css?family=Carter+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Contrail+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
+
+.main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1em;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5em;
+
+  .add {
+    font-family: "Lexend Deca", cursive;
+    font-size: 0.95em;
+  }
+  .transaction-item {
+    small,
+    span {
+      font-family: "PT Sans", sans-serif;
+    }
+  }
+}
+
+.wallet_info_block {
+  font-family: "Contrail One", cursive;
+  grid-column: span 2;
+  border: 2px solid #bbbbbb;
+  border-radius: 0.3em;
+  text-shadow: 3px 2px 1px #f7f7f7;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.3em;
+  grid-gap: 0.3em;
+  text-align: center;
+  user-select: none;
+  .alert {
+    margin: 0;
+    padding: 0.3em 0;
+  }
+}
+.balance {
+  grid-column: span 2;
+}
+
+.expenses_block {
+  background: #eee;
+  border: 2px solid #bbb;
+  padding: 0.3em;
+  border-radius: 0.3em;
+
+  .accordion {
+    margin-top: 0.5em;
+
+    .transaction-even {
+      background: #fff;
+    }
+    .transaction-odd {
+      background: #f7f7f7;
+    }
+    .transaction-item {
+      padding: 0 1em;
+    }
+
+    .type-btn {
+      font-family: "Lexend Deca", sans-serif;
+    }
+  }
+
+  .label-exp-block {
+    font-family: "Carter One", cursive;
+    color: #fff;
+    letter-spacing: 1px;
+    width: 100%;
+    text-shadow: 3px 2px 1px #aaaaaa;
+    font-weight: bold;
+    font-size: 23px;
+    padding-left: 0.4em;
+    height: 1.7em;
+    background-color: #d6d8d9;
+    border-radius: 0.3em 0.3em 0 0;
+    border: 1px solid #bbbbbb;
+    display: inline-block;
+    margin-bottom: 0.3em;
+    user-select: none;
+  }
+}
+.expenses_input {
+  display: grid;
+  grid-gap: 0.3em;
+  grid-template-columns: 70% 28%;
+}
+.card-collapse {
+  max-height: 15em;
+  overflow-y: scroll;
+  .card-body {
+    height: 100%;
+    padding: 1em 0;
+  }
+}
+#headingOne,
+#headingTwo,
+#headingThree,
+#headingFour,
+#headingFive {
+  padding: 0;
+}
+
+.income_block {
+  background: #eee;
+  border: 2px solid #bbb;
+  border-radius: 0.3em;
+  padding: 0.3em 0.3em 1em 0.3em;
+
+  .label-inc-block {
+    font-family: "Carter One", cursive;
+    letter-spacing: 1px;
+    color: #fff;
+    width: 100%;
+    text-shadow: 3px 2px 1px #aaaaaa;
+    font-weight: bold;
+    font-size: 23px;
+    text-align: end;
+    padding: 0 0.4em;
+    height: 1.7em;
+    background-color: #d6d8d9;
+    border-radius: 0.3em 0.3em 0 0;
+    border: 1px solid #bbbbbb;
+    display: inline-block;
+    margin-bottom: 0.3em;
+    user-select: none;
+  }
+}
+.income_input {
+  display: grid;
+  grid-template-columns: 80% 18%;
+  grid-gap: 0.3em;
+
+  .btn-add-income {
+    padding: 0;
+  }
+}
+.income_list {
+  padding: 1em 1em 0 1em;
+  max-height: 20em;
+  overflow-y: scroll;
+}
+
+.bar {
+  user-select: none;
+  height: 1.5em;
+  font: 10px sans-serif;
+  text-align: right;
+  padding: 0.3em;
+  margin: 0.2em;
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Righteous", sans-serif;
+  &:nth-child(1) {
+    background-color: #818b94;
+  }
+  &:nth-child(2) {
+    background-color: #8995a0;
+  }
+  &:nth-child(3) {
+    background-color: #96a1ac;
+  }
+  &:nth-child(4) {
+    background-color: #a4b3c0;
+  }
+  &:nth-child(5) {
+    background-color: #acbac7;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+  .expenses_input {
+    grid-template-columns: 1fr;
+  }
+
+  .wallet_info_block {
+    grid-template-columns: 1fr;
+    grid-column: span 1;
+    .balance {
+      grid-column: span 1;
+    }
+  }
+}

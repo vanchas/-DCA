@@ -1,0 +1,54 @@
+{
+  "homepage": "http://gitname.github.io/DCA",
+  "name": "DCA",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001",
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@babel/preset-react": "^7.9.1",
+    "bootstrap": "^4.4.1",
+    "mdbreact": "^4.25.3",
+    "moment": "^2.24.0",
+    "node": "^13.8.0",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.17",
+    "react-dom": "^16.12.0",
+    "react-moment": "^0.9.7",
+    "react-redux": "^7.2.0",
+    "react-scripts": "3.4.0",
+    "react-select": "^3.0.8",
+    "redux": "^4.0.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "jest",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "babel-jest": "25.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "gh-pages": "^2.2.0",
+    "jest": "^25.1.0",
+    "node-sass": "^4.13.1",
+    "react-test-renderer": "^16.13.1"
+  }
+}
