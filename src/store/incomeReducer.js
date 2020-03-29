@@ -6,11 +6,11 @@ const initialState = {
   incomesTotalSum: 0
 }
 
-let sumNum = 0;
+// let sumNum = 0;
 
-function sum(num) {
-  return sumNum += +num;
-}
+// function sum(num) {
+//   return sumNum += +num;
+// }
 
 const incomeReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -19,7 +19,7 @@ const incomeReducer = (state = initialState, action) => {
       if (valueValidator(action.payload.sum)) {
         return Object.assign({}, state, {
           incomes: state.incomes.concat(action.payload),
-          incomesTotalSum: sum(action.payload.sum)
+          // incomesTotalSum: sum(action.payload.sum)
         })
       }
       return state;

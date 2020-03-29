@@ -22,3 +22,20 @@ export const setNewIncome = (sum, comment, date) => {
     }
   }
 }
+
+// export const LOAD_STATE_EXPENSES_ACTION = 'LOAD_STATE_EXPENSES_ACTION';
+// export const LOAD_STATE_INCOMES_ACTION = 'LOAD_STATE_INCOMES_ACTION';
+
+// export const loadStateIncomesAction = incomes => {
+//   return {
+//     type: LOAD_STATE_INCOMES_ACTION,
+//     payload: incomes
+//   }
+// }
+
+// export const loadStateExpensesAction = expenses => {
+//   return {
+//     type: LOAD_STATE_EXPENSES_ACTION,
+//     payload: expenses
+//   }
+// }

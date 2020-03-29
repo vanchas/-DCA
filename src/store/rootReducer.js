@@ -6,7 +6,7 @@ import { loadState, saveState } from './localStorage';
 export const rootReducer = combineReducers({
   expenseReducer,
   incomeReducer
-})
+});
 
 const persistedState = loadState();
 export const store = createStore(
@@ -16,4 +16,4 @@ export const store = createStore(
 
 store.subscribe(() => {
   saveState(store.getState());
-})
+});

@@ -54,11 +54,6 @@ export default class Expenses extends Component {
       this.state.expenseComment,
       this.state.selectedOption.value
     );
-    // this.types.map(t => {
-    //   if (t.type === this.state.selectedOption.value) {
-    //     t.amount += +this.state.expenseSum;
-    //   }
-    // });
     this.setState({
       expenseSum: '',
       expenseComment: '',
@@ -71,25 +66,13 @@ export default class Expenses extends Component {
   }
 
   updateList = exType => {
-    // this.props.expenses.map(exp => {
-    //   if (exp.type === exType) {
-    //     this.types.forEach(tp => {
-    //       exp.storage.map(e => {
-    //         if (tp.type === exType) {
-    //           return tp.amount += +e.sum;
-    //         }
-    //       })
-    //     })
-    //   }
-    // })
-
-    return this.props.expenses.map((exp) => {
-      if (exp.type === exType) {
-        return exp.storage.map(e => {
+    return this.props.expenses.map(
+      (exp) => (exp.type === exType)
+        ? exp.storage.map(e => {
           return <ItemOfListTransaction key={Math.random()} transaction={e} />
         })
-      }
-    })
+        : ''
+    )
   }
 
   chartValuesCounter = () => {
@@ -118,18 +101,18 @@ export default class Expenses extends Component {
 
   updateTypeAmount = exType => {
     let arrOfTypeSums = [];
-    this.props.expenses.map(exp => {
-      if (exp.type === exType) {
-        return exp.storage.map(e => {
+    this.props.expenses.map(
+      exp => (exp.type === exType)
+        ? exp.storage.map(e => {
           return arrOfTypeSums.push(+e.sum);
         })
-      }
-    })
-    this.types.map(tp => {
-      if (tp.type === exType) {
-        return tp.amount = arrOfTypeSums.reduce((a, b) => +a + +b, 0);
-      }
-    })
+        : ''
+    )
+    this.types.map(
+      tp => (tp.type === exType)
+        ? tp.amount = arrOfTypeSums.reduce((a, b) => +a + +b, 0)
+        : ''
+    )
     return arrOfTypeSums.reduce((a, b) => a + b, 0);
   }
 

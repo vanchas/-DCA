@@ -9,8 +9,10 @@ export default class Main extends Component {
     return (
       <main className="main">
         <TotalInfo
-          incomesTotalSum={this.props.incomesTotalSum}
-          expensesTotalSum={this.props.expensesTotalSum}
+          // incomesTotalSum={this.props.incomesTotalSum}
+          // expensesTotalSum={this.props.expensesTotalSum}
+          expenses={this.props.expenses}
+          incomes={this.props.incomes}
         />
         <Expenses
           expenses={this.props.expenses}

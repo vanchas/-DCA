@@ -1,4 +1,4 @@
-import { ADD_EXPENSE } from './actions';
+import { ADD_EXPENSE, LOAD_STATE_EXPENSES_ACTION } from './actions';
 import { valueValidator } from '../validators/validator';
 import moment from 'moment';
 
@@ -12,11 +12,11 @@ const initialState = {
   ],
   expensesTotalSum: 0
 }
-let sumNum = 0;
+// let sumNum = 0;
 
-function sum(num) {
-  return sumNum += +num;
-}
+// function sum(num) {
+//   return sumNum += +num;
+// }
 
 export const expenseReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,7 +25,7 @@ export const expenseReducer = (state = initialState, action) => {
       if (valueValidator(action.payload.sum)) {
         return {
           ...state,
-          expensesTotalSum: sum(action.payload.sum),
+          // expensesTotalSum: sum(action.payload.sum),
           expenses: state.expenses.map(exp => {
             if (exp.type !== action.payload.type) {
               return exp;
@@ -43,7 +43,7 @@ export const expenseReducer = (state = initialState, action) => {
         }
       }
       return state;
-
+      
     default:
       return state;
   }

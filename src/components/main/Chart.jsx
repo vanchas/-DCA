@@ -8,9 +8,7 @@ export const Chart = props => {
       className="bar"
       style={{ width: item + '%' }}
     >
-      <span className="title">{types.map((type, ind) => {
-        if (i === ind) return type.label;
-      })} </span>
+      <span className="title">{types.map((type, ind) => (i === ind) ? type.label : '' )} </span>
       &nbsp; &nbsp;
       <span className="percent"> {(isNaN(item)) ? '' : `${item} %`}</span>
     </div>
