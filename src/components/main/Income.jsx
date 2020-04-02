@@ -26,7 +26,7 @@ export default class Info extends Component {
   }
 
   onIncomeAdding = () => {
-    this.props.setNewIncome(
+    this.props.loadIncome(
       this.state.incomeSum,
       this.state.incomeComment,
       moment().format("MMM Do YY")

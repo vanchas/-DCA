@@ -1,8 +1,8 @@
 {
-  "homepage": "http://gitname.github.io/DCA",
   "name": "DCA",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@babel/preset-react": "^7.9.1",
     "bootstrap": "^4.4.1",
@@ -45,6 +45,8 @@
     "gh-pages": "^2.2.0",
     "jest": "^25.1.0",
     "node-sass": "^4.13.1",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.3"
   }
 }

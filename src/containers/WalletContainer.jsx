@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Main from '../components/main/Main';
 import { setNewExpense, setNewIncome } from '../store/actions';
 import { connect } from 'react-redux';
+import { loadIncome} from '../store/actions';
 
 class WalletContainer extends Component {
   render() {
@@ -14,6 +15,7 @@ class WalletContainer extends Component {
           expensesTotalSum={this.props.expensesTotalSum}
           setNewExpense={this.props.setNewExpense}
           setNewIncome={this.props.setNewIncome}
+          loadIncome={this.props.loadIncome}
         />
       </div>
     )
@@ -31,7 +33,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   setNewExpense,
-  setNewIncome
+  setNewIncome,
+  loadIncome
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletContainer);

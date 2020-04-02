@@ -22,7 +22,7 @@ export default class TotalInfo extends Component {
     let incomesSum = 0;
     this.props.incomes.map(inc => {
       return incomesSum += +inc.sum;
-    }, 0);
+    });
     return incomesSum;
   }
 

@@ -21,6 +21,7 @@ export default class Main extends Component {
         <Income
           incomes={this.props.incomes}
           setNewIncome={this.props.setNewIncome}
+          loadIncome={this.props.loadIncome}
         />
       </main>
     )
